@@ -13,21 +13,26 @@ function Quiz() {
     const [score,setScore] = useState(0);
     const [clickedOption,setClickedOption]=useState(0);
     const [showResult,setShowResult]=useState(false);
-   const [time, setTime] = useState(10)
+   const [time, setTime] = useState(600)
     const isLastQuestion = currentQuestion === QuizData.length - 1;//
-//time
 
-function timer(){
-    if(time==0){
-        // resetAll();
+    //time
+    const minutes=Math.floor(time/60);
+    const seconds=time%60;
+
+    function timer(){
+   
+    if(time===0){
+   
         lastQuestion();
     }else{
     setTime(time-1)
     }
+    // return {minutes:seconds}
 }
 
 useEffect(()=>{
-   const intervalclear=setInterval(timer ,10000);
+   const intervalclear=setInterval(timer ,1000);
       
      return ()=>{
         clearInterval(intervalclear)
@@ -85,7 +90,8 @@ const lastQuestion = ()=>{
                 <QuizResult  score={score} totalScore={QuizData.length*2} tryAgain={resetAll}/></>
             ):(
             <>
-             <h3>Time : {time} minutes left</h3>
+            {/* //{time}  */}
+             <h3>Time : {minutes}:{seconds} minutes left</h3>
             <div className={styles.question}>
          
                 <span id="question-number">{currentQuestion+1}. </span>
@@ -94,16 +100,7 @@ const lastQuestion = ()=>{
             <div className={styles.optioncontainer}>
                 {QuizData[currentQuestion].options.map((option,i)=>{
                     return(
-                        // <button 
-                        // // className="option-btn"
-                        // className={`option-btn ${
-                        //     clickedOption === i+1?"checked":null
-                        // }`}
-                        // key={i}
-                        // onClick={()=>setClickedOption(i+1)}
-                        // >
-                        // {option}
-                        // </button>
+                     
                         <>  <li className={styles.optionbtn} key={i}>
                         <input
                         
