@@ -11,7 +11,7 @@ function QuizResult(props) {
                             <div className={styles.score}>
                         <p className={styles.colorsuccess}>Congratulations! You passed the test!</p>
                         <br></br>
-               <p> Your Score:{props.score}/{props.totalScore}  </p>
+         
                         </div>
                     ) : (
                       <>

@@ -43,6 +43,7 @@ const lastQuestion = ()=>{
     updateScore();
     if(currentQuestion< QuizData.length-1){
         setCurrentQuestion(QuizData.length-1);
+        // setCurrentQuestion(currentQuestion+1);
         setClickedOption(0);
         
     }else{
@@ -76,7 +77,7 @@ const lastQuestion = ()=>{
         setCurrentQuestion(0);
         setClickedOption(0);
         setScore(0);
-        setTime(10)
+        setTime(600)
         }
   
   return (
